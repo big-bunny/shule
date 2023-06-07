@@ -1,12 +1,14 @@
+import { PrismaClient } from '@prisma/client';
+// import bcrypt from 'bcrypt';
+import { NuxtAuthHandler } from '#auth';
 import FacebookProvider from 'next-auth/providers/facebook';
 import GithubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { PrismaClient } from '@prisma/client';
-import { NuxtAuthHandler } from '#auth';
+
 const prisma = new PrismaClient();
 
-const getUserByEmail = async (email: any) => {
+const getUserByEmail = async (email: string) => {
   try {
     const user = await prisma.user.findUnique({ where: { email } });
     return user;
@@ -16,9 +18,9 @@ const getUserByEmail = async (email: any) => {
   }
 };
 
-const getUserByUsername = async (username: any) => {
+const getUserByUsername = async (username: string) => {
   try {
-    const user = await prisma.user.findUnique({ where: { username } });
+    const user = await prisma.user.findUnique({ where: { username: username } });
     return user;
   } catch (error) {
     console.error('Error retrieving user by username:', error);
@@ -37,7 +39,7 @@ const authHandler = NuxtAuthHandler({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       allowDangerousEmailAccountLinking: true,
-      profile(profile: { id: any; name: any; email: any; }) {
+      profile(profile: { id: any; name: any; email: any }) {
         return {
           id: profile.id,
           name: profile.name,
@@ -47,54 +49,34 @@ const authHandler = NuxtAuthHandler({
     }),
     FacebookProvider.default({
       clientId: process.env.FACEBOOK_CLIENT_ID,
-      clientSecret: process.env.FACEBOOK_CLIENT_SECRET
+      clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
     }),
-    CredentialsProvider.default({
-      id: "domain-login",
-      name: "Domain Account",
-      async authorize(credentials: { domain: any; username: any; password: any; }, req: any) {
-        const { domain, username, password } = credentials;
-        const user = await getUserByUsername(username);
-
-        if (!user || user.domain !== domain || user.password !== password) {
-          return null; // Authentication failed
-        }
-
-        return user; // Authentication successful
-      },
-      credentials: {
-        domain: {
-          label: "Domain",
-          type: "text",
-          placeholder: "CORPNET",
-          value: "CORPNET",
-        },
-        username: { label: "Username", type: "text", placeholder: "jsmith" },
-        password: { label: "Password", type: "password" },
-      },
-    }),
-    CredentialsProvider.default({
-      id: "intranet-credentials",
-      name: "Two Factor Auth",
-      async authorize(credentials: { email: any; "2fa-key": any; }, req: any) {
-        const { email, "2fa-key": twoFactorKey } = credentials;
-        const user = await getUserByEmail(email);
-
-        if (!user || user.twoFactorKey !== twoFactorKey) {
-          return null; // Authentication failed
-        }
-
-        return user; // Authentication successful
-      },
-      credentials: {
-        email: { label: "Username", type: "text", placeholder: "jsmith" },
-        "2fa-key": { label: "2FA Key" },
-      },
-    }),
-  ],
-  pages: {
-    signIn: '/login',
+ CredentialsProvider.default({
+  name: 'Credentials',
+  credentials: {
+    username: { label: 'Username', type: 'text' },
+    password: { label: 'Password', type: 'password' },
   },
+  async authorize(credentials: { username: any; password: any; }) {
+    const { username, password } = credentials;
+
+    // Hardcoded known user credentials
+    const knownUser = {
+      username: 'jsmith',
+      password: 'hunter2',
+      // Add other user properties if needed
+    };
+
+    if (username === knownUser.username && password === knownUser.password) {
+      // Return the known user object if credentials match
+      return knownUser;
+    }
+
+    return null;
+  },
+}),
+
+  ],
 });
 
 export default authHandler;

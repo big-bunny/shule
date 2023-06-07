@@ -1,52 +1,43 @@
 <template>
-  <form @submit.prevent="handleSubmit" class="flex flex-col items-center mt-8">
-    <input v-model="email" type="email" placeholder="Email" class="w-64 px-4 py-2 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
-    <input v-model="password" type="password" placeholder="Password" class="w-64 px-4 py-2 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
-    <button type="submit" class="w-64 px-4 py-2 text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Sign in</button>
-  </form>
+  <div>
+    <form @submit="handleLogin">
+      <input type="text" v-model="username" placeholder="Username" />
+      <input type="password" v-model="password" placeholder="Password" />
+      <button type="submit">Login</button>
+    </form>
+  </div>
 </template>
 
 <script>
-import { reactive } from 'vue';
+// import { useAuth } from '#auth'
 
 export default {
   setup() {
-    const state = reactive({
-      email: '',
-      password: '',
-    });
+    const { signIn } = useAuth()
 
-    const handleSubmit = async () => {
-      console.log('form submitted');
+    const username = ref('')
+    const password = ref('')
+
+    async function handleLogin(event) {
+      event.preventDefault()
+      
       try {
-        const response = await fetch('/api/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            email: state.email,
-            password: state.password,
-          }),
-        });
-
-        if (response.ok) {
-          const user = await response.json();
-          
-          console.log('User signed in:', user);
-        } else {
-          alert('Invalid email or password');
-        }
+        await signIn('credentials', {
+          username: username.value,
+          password: password.value,
+          callbackUrl: '/protected/friends' // Redirect after successful login
+        })
+        // Handle successful login, e.g., redirect to a protected page
       } catch (error) {
-        console.error(error);
-        alert('An error iko occurred');
+        // Handle login error, e.g., display an error message
       }
-    };
+    }
 
     return {
-      ...state,
-      handleSubmit,
-    };
-  },
-};
+      username,
+      password,
+      handleLogin
+    }
+  }
+}
 </script>

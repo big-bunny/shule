@@ -2,7 +2,7 @@
   <div class="flex flex-col items-center justify-center h-screen bg-cover bg-center bg-fixed" style="background-image: url('/path/to/cover-image.jpg')">
     <h1 class="text-4xl text-white font-bold mb-6">Welcome to Schield Centre</h1>
     <div class="flex space-x-4">
-      <a href="/Home" class="text-white bg-green-500 hover:bg-red-700 px-4 py-2 rounded">Get Started</a>
+      <a href="/Home" class="text-red  bg-green-500 hover:bg-accent px-2 py-2 rounded-lg">Get Started</a>
       <div class=" bg-accent rounded-full flex flex-col justify-center p-2">
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
       <button

@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+// import { PrismaClient } from '@prisma/client';
 // import bcrypt from 'bcrypt';
 import { NuxtAuthHandler } from '#auth';
 import FacebookProvider from 'next-auth/providers/facebook';
@@ -6,27 +6,7 @@ import GithubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
-const prisma = new PrismaClient();
 
-const getUserByEmail = async (email: string) => {
-  try {
-    const user = await prisma.user.findUnique({ where: { email } });
-    return user;
-  } catch (error) {
-    console.error('Error retrieving user by email:', error);
-    return null;
-  }
-};
-
-const getUserByUsername = async (username: string) => {
-  try {
-    const user = await prisma.user.findUnique({ where: { username: username } });
-    return user;
-  } catch (error) {
-    console.error('Error retrieving user by username:', error);
-    return null;
-  }
-};
 
 const authHandler = NuxtAuthHandler({
   secret: process.env.NUXT_SECRET,

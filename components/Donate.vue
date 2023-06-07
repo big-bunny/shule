@@ -1,13 +1,9 @@
 <script lang="ts">
+definePageMeta({ middleware: 'auth' })
 import loadScript from 'load-script'; // Importing the 'load-script' library for dynamically loading scripts
 import VueCarousel from 'vue-carousel'; // Importing the 'vue-carousel' component
-definePageMeta({ middleware: 'auth' })
-export default {
 
-  props: {
-    protectionType: String, // Prop to receive the protection type value
-    href: String, // Prop to receive the URL value
-  },
+export default {
 
   components: {
     VueCarousel, // Registering the 'vue-carousel' component

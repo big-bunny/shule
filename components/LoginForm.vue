@@ -5,6 +5,7 @@
       <input type="password" v-model="password" placeholder="Password" />
       <button type="submit">Login</button>
     </form>
+ 
   </div>
 </template>
 
@@ -14,6 +15,8 @@ export default {
     return {
       username: '',
       password: '',
+      newUsername: '',
+      newPassword: '',
     };
   },
   methods: {
@@ -33,6 +36,7 @@ export default {
           console.error(error);
         });
     },
+  
   },
 };
 </script>

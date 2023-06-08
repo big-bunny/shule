@@ -11,7 +11,7 @@
         <div class="flex-grow bg-gray-300 h-px"></div>
       </div>
 
-      <LoginForm />
+
     </div>
   </section>
 </template>

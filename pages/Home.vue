@@ -1,9 +1,9 @@
 <template>
-  <div id="about" class="bg-accent mt-20 rounded-lg text-gray-700 my-8">
+  <div id="about" class="mt-20 rounded-lg text-gray-700 my-8">
     <div class="container mx-auto px-8 py-10">
       <div class="flex flex-col lg:flex-row">
         <div class="w-full lg:w-2/3 flex">
-          <header class="min-h-screen bg-fixed bg-no-repeat bg-cover bg-center bg-accent" :style="`background-image: url('${currentCarousel.image}')`">
+          <header class="min-h-screen bg-fixed bg-no-repeat bg-cover bg-center " :style="`background-image: url('${currentCarousel.image}')`">
             <div class="bg-green-600 bg-opacity-75 px-4 py-8 md:px-12 rounded shadow-md border border-red-500">
               <div class="text-xl text-black font-bold leading-relaxed">
                 <p class="">

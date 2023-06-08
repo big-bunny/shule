@@ -1,59 +1,57 @@
 <template>
-  <div class="mt-40 shadow-xl bg-white px-5 py-4 rounded-t">  
-     <Donate />
-    <div class="flex items-center justify-between mb-4">
-      <div class="flex items-center space-x-2">
-        <img
-          v-if="status === 'authenticated' && data?.user?.image"
-          class="w-12 h-12 rounded-full"
-          :src="data.user.image"
-          alt="User Avatar"
-        />
-        <h1 v-if="status === 'authenticated'" class="text-lg">
-          Authenticated as {{ data?.user?.name }}!
-        </h1>
-        <h1 v-else class="text-lg">
-          Not logged in
-        </h1>
-      </div>
-   
-    </div>
+  <div class="flex flex-col items-center justify-center mt-80 mb-60  ">
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div class="bg-white rounded-lg shadow-lg p-6">
-        <h2 class="text-xl font-semibold mb-4">User Information</h2>
-        <div v-if="status === 'authenticated'">
-          <p><strong>Name:</strong> {{ data?.user?.name }}</p>
-          <p><strong>Email:</strong> {{ data?.user?.email }}</p>
-          <p><strong>Role:</strong> {{ data?.user?.role }}</p>
-        </div>
-        <div v-else>
-          <p>Please log in to view user information.</p>
+    <div class="flex space-x-4">
+      <Donate />
+      <div class=" rounded-full flex flex-col justify-center p-2">
+        <div class="sm:mx-auto sm:w-full sm:max-w-md">
+          <button
+            v-if="status === 'authenticated'"
+            class="flex items-center justify-center space-x-2 bg-red-500 text-white rounded-lg py-2 px-3 text-lg"
+            @click="signOut({ callbackUrl: '/' })"
+          >
+            <span>Logout</span>
+          </button>
+          <button
+            v-else
+            class="flex items-center justify-center space-x-2 bg-green-500 text-white rounded-lg py-2 px-3 text-lg"
+            @click="signIn()"
+          >
+            <i class="fa fa-right-to-bracket pt-0.5"></i>
+            <span>Login</span>
+          </button>
         </div>
       </div>
-    </div>
-
-    <div class="mt-4">
-      <button
-        v-if="status === 'authenticated'"
-        class="flex items-center justify-center space-x-2 bg-red-500 text-white rounded-lg py-2 px-3 text-lg"
-        @click="signOut({ callbackUrl: '/' })"
-      >
-        <span>Logout</span>
-      </button>
-      <button
-        v-else
-        class="flex items-center justify-center space-x-2 bg-green-500 text-white rounded-lg py-2 px-3 text-lg"
-        @click="signIn()"
-      >
-        <i class="fa fa-right-to-bracket pt-0.5"></i>
-        <span>Login</span>
-      </button>
     </div>
   </div>
 </template>
+<script lang="ts">
 
-<script setup lang="ts">
-definePageMeta({ middleware: 'auth' })
-const { status, data, signOut, signIn } = useAuth();
+export default {
+  // Component code
+  setup() {
+    const { status, signIn, signOut } = useAuth(); // Use the useSession function
+    
+    const loggedIn = computed(() => status.value === 'authenticated');
+    
+    async function handleSignIn() {
+      await signIn('primaryOptions');
+    }
+     async function handleSignOut() {
+      await signOut();
+     }
+
+    return {
+      status,
+      signIn,
+      signOut,
+      loggedIn,
+      handleSignIn,
+      handleSignOut
+    };
+  },
+};
 </script>
+<style>
+/* Tailwind CSS classes are applied directly, no additional comments needed */
+</style>

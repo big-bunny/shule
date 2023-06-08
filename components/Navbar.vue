@@ -1,6 +1,6 @@
 <template>
   <header id="home" class="container">
-    <nav id="Home" class="backdrop-blur-lg flex items-center justify-between rounded border border-red-600 flex-wrap p-2 z-50 md:rounded-80">
+    <nav id="Home" class="backdrop-blur-3xl flex items-center justify-between rounded border border-red-600 flex-wrap p-2 z-50 md:rounded-80">
       <!-- Logo and Site Name -->
       <div class="flex items-center flex-shrink-0 text-secondary">
         <img :src="logo" alt="Logo" class="h-8 w-8">

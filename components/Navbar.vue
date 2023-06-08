@@ -16,7 +16,7 @@
             <i class="fas fa-times" v-if="isMenuOpen" :class="{ 'hidden': !isMenuOpen }"></i>
           </button>
           <!-- Dropdown Menu -->
-          <div :class="{ 'hidden': !isMenuOpen }" class="absolute top-full right-0 mt-2 bg-accent text-red-500 text-lg font-bold shadow-md rounded-md">
+          <div :class="{ 'hidden': !isMenuOpen }" class="absolute top-full right-0 mt-2 bg-gradient-to-l from-secondary  to rounded-md">
             <template v-for="(link, index) in links" :key="index">
               <!-- Check if link has dropdown items -->
               <div v-if="link.dropdownItems">
@@ -54,7 +54,7 @@
                 <i class="fas fa-chevron-down mr-1"></i>
                 {{ link.label }}
               </a>
-              <div v-if="link.dropdownItems && link.isOpen" class="dropdown absolute top-full left-0 mt-2 bg-secondary text-red-500 text-lg font-bold shadow-md rounded-md" @click="closeDropdown(index)">
+              <div v-if="link.dropdownItems && link.isOpen" class="dropdown absolute top-full left-0 mt-2 text-red-500 text-lg font-bold shadow-md rounded-md bg-gradient-to-r from-secondary to-" @click="closeDropdown(index)">
                 <template v-for="(dropdownItem, dropdownIndex) in link.dropdownItems">
                   <a :href="dropdownItem.url" class="block px-4 py-2 hover:text-green-500 transition duration-300 ease-in-out">
                     <i class="fas fa-chevron-right mr-1"></i>

@@ -7,7 +7,7 @@
      
       <div class="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         <!-- Display each student -->
-        <div v-for="item in students" :key="item.id" class="bg-accent shadow-lg rounded-lg overflow-hidden">
+        <div v-for="item in students" :key="item.id" class="bg-secondary shadow-lg rounded-lg overflow-hidden">
           <!-- Display student image -->
           <img class="h-48 w-full object-cover" :src="item.src" :alt="item.name" />
           <div class="p-6">

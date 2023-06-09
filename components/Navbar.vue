@@ -45,7 +45,7 @@
               </a>
               <div v-if="link.dropdownItems && link.isOpen" class="dropdown absolute top-full left-0 mt-2 text-red-500 text-lg font-bold shadow-md rounded-md bg-gradient-to-r from-secondary to-" @click="closeDropdown(index)">
                 <template v-for="(dropdownItem, dropdownIndex) in link.dropdownItems" :key="dropdownIndex">
-                  <a :href="dropdownItem.url" class="block px-4 py-2 hover:text-green-500 transition duration-300 ease-in-out">
+                  <a :href="dropdownItem.url" class="block px-4 py-2 hover:text-green-500 hover:bg-accent rounded-full transition duration-300 ease-in-out">
                     <i class="fas fa-chevron-right mr-1"></i>
                     {{ dropdownItem.label }}
                   </a>

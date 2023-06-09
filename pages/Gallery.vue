@@ -9,7 +9,7 @@
         <div
           v-for="item in gallery"
           :key="item.id"
-          class="bg-accent shadow-lg rounded-lg overflow-hidden relative cursor-pointer"
+          class="backdrop-blur-3xl shadow-lg rounded-lg overflow-hidden relative cursor-pointer"
           @click="showModal(item)"
           @mouseover="item.hover = true"
           @mouseout="item.hover = false"
@@ -32,7 +32,7 @@
           </div>
         </div>
 
-        <div v-for="video in videos" :key="video.title" class="bg-accent shadow-lg rounded-lg overflow-hidden relative">
+        <div v-for="video in videos" :key="video.title" class="backdrop-blur-3xl shadow-lg rounded-lg overflow-hidden relative">
           <div class="relative h-64">
             <iframe
               :src="video.src"
@@ -46,13 +46,13 @@
       </div>
     </div>
     <div v-if="selectedGallery" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 z-50">
-      <div class="bg-accent p-8 rounded-lg max-w-2xl">
+      <div class="backdrop-blur-3xl p-8 rounded-lg max-w-2xl">
         <img :src="selectedGallery.src" :alt="selectedGallery.name" class="w-full rounded-lg shadow-lg" />
         <div class="mt-4 text-center">
-          <h2 class="text-xl font-bold mb-2">{{ selectedGallery.name }}</h2>
-          <p class="text-base leading-relaxed">{{ selectedGallery.title }}</p>
+          <h2 class="text-xl text-secondary font-bold mb-2">{{ selectedGallery.name }}</h2>
+          <p class="text-base text-green-500 leading-relaxed">{{ selectedGallery.title }}</p>
         </div>
-        <button class="mt-6 py-2 px-4 rounded-full bg-red text-white font-bold" @click="selectedGallery = null">Close</button>
+        <button class="mt-6 py-2 px-4 bg-accent rounded-full bg-red-500 text-secondary font-bold" @click="selectedGallery = null">Close</button>
       </div>
     </div>
   </section>

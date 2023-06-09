@@ -3,8 +3,8 @@
     <div class="container mx-auto px-8 py-10">
       <div class="flex flex-col lg:flex-row">
         <div class="w-full lg:w-2/3 flex">
-          <header class="min-h-screen bg-fixed bg-no-repeat bg-cover bg-center " :style="`background-image: url('${currentCarousel.image}')`">
-            <div class="bg-green-600 bg-opacity-75 px-4 py-8 md:px-12 rounded shadow-md border border-red-500">
+          <header class="min-h-screen bg-fixed rounded-lg bg-no-repeat bg-cover bg-center " :style="`background-image: url('${currentCarousel.image}')`">
+            <div class="bg-green-400 bg-opacity-25 px-4 py-8 md:px-12 rounded-3xl shadow-md border border-red-500">
               <div class="text-xl text-black font-bold leading-relaxed">
                 <p class="">
                   {{ currentCarousel.text }}
@@ -13,7 +13,7 @@
             </div>
           </header>
         </div>
-        <div class="w-full lg:w-1/3 bg-gradient-to-r from-secondary to-accent rounded shadow-md px-8 py-10 md:py-20 lg:px-12 flex flex-col">
+        <div class="w-full lg:w-1/3 bg-gradient-to-r from-secondary to-accent rounded-3xl shadow-md px-8 py-10 md:py-20 lg:px-12 flex flex-col">
           <h2 class="text-3xl font-extrabold bg-gradient-to-r from-accent to-secondary text-gray-900 inline-block rounded-full px-6 py-2">
             ABOUT SCHIELD CENTER
           </h2>

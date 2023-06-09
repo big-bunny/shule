@@ -74,7 +74,7 @@ export default {
   experimentalFeatures: {
     nodeModules: true,
   },
- serverMiddleware: ['~/server/index'], 
+
   // Router configuration
   router: {
     middleware: ['auth'],

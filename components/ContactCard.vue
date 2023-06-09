@@ -1,9 +1,9 @@
 <template>
-  <section id="contact" class="container py-20">
+  <section id="contact" class="container rounded-full py-20">
   
     <!-- Navigation bar for the contact section -->
     <nav
-      class="md:w-2/3 bg-gradient-to-r from-accent to-white rounded shadow-md mx-auto"
+      class="md:w-2/3 bg-gradient-to-r from-accent to-white rounded-xl shadow-md mx-auto"
     >
       <nav
         class="flex justify-evenly bg-right bg-no-repeat bg-contain text-primary"

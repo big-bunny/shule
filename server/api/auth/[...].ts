@@ -7,6 +7,7 @@ import { PrismaClient } from '@prisma/client';
 import crypto from 'crypto';
 import nodemailer from 'nodemailer';
 
+// Create a new instance of PrismaClient
 const prisma = new PrismaClient();
 
 // Create a nodemailer transporter
@@ -19,14 +20,18 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// Create an instance of NuxtAuthHandler
 const authHandler = NuxtAuthHandler({
   secret: process.env.NUXT_SECRET,
-  
+
+  // Configure the authentication providers
   providers: [
+    // GitHub authentication provider
     GithubProvider.default({
       clientId: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
     }),
+    // Google authentication provider
     GoogleProvider.default({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
@@ -39,17 +44,19 @@ const authHandler = NuxtAuthHandler({
         };
       },
     }),
+    // Facebook authentication provider
     FacebookProvider.default({
       clientId: process.env.FACEBOOK_CLIENT_ID,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
     }),
     // ...
+    // Credentials authentication provider
     CredentialsProvider.default({
       name: 'Credentials',
       credentials: {
-         registrationUsername: { label: 'Email', type: 'text' },
-         username: { label: 'Username', type: 'text' },
-         password: { label: 'Password', type: 'password' },
+        registrationUsername: { label: 'Email', type: 'text' },
+        username: { label: 'Username', type: 'text' },
+        password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials: { username: any; password: any; registrationUsername: any }) {
         const { username, password, registrationUsername } = credentials;
@@ -79,8 +86,8 @@ const authHandler = NuxtAuthHandler({
           await transporter.sendMail({
             from: 'your_email',
             to: newUser.email,
-            subject: 'Welcome to Schield Centre firends  forum',
-            text: 'Thank you for signing up with us today this is our offiicial email feel free to reach support through the dialouge!',
+            subject: 'Welcome to Schield Centre friends forum',
+            text: 'Thank you for signing up with us today. This is our official email. Feel free to reach out to support through this email!',
           });
 
           // Return the newly created user object
@@ -95,7 +102,6 @@ const authHandler = NuxtAuthHandler({
     }),
 
     // ...
-
   ],
 });
 

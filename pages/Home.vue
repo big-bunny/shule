@@ -2,9 +2,11 @@
   <div id="about" class="mt-20 rounded-lg text-gray-700 my-8">
     <div class="container mx-auto px-8 py-10">
       <div class="flex flex-col lg:flex-row">
+        <!-- Left section with the header image -->
         <div class="w-full lg:w-2/3 flex">
           <header class="min-h-screen bg-fixed rounded-lg bg-no-repeat bg-cover bg-center " :style="`background-image: url('${currentCarousel.image}')`">
             <div class="bg-green-400 bg-opacity-25 px-4 py-8 md:px-12 rounded-3xl shadow-md border border-red-500">
+              <!-- Text content on top of the header image -->
               <div class="text-xl text-black font-bold leading-relaxed">
                 <p class="">
                   {{ currentCarousel.text }}
@@ -13,10 +15,15 @@
             </div>
           </header>
         </div>
+
+        <!-- Right section with the about content -->
         <div class="w-full lg:w-1/3 bg-gradient-to-r from-secondary to-accent rounded-3xl shadow-md px-8 py-10 md:py-20 lg:px-12 flex flex-col">
+          <!-- Heading for the about section -->
           <h2 class="text-3xl font-extrabold bg-gradient-to-r from-accent to-secondary text-gray-900 inline-block rounded-full px-6 py-2">
             ABOUT SCHIELD CENTER
           </h2>
+
+          <!-- Text content for the about section -->
           <div class="text-2xl text-center py-10">
             <p>
               Schield Center is a school located in Kajiado, officially established in 2008 by Patricia Schield, an American woman who made a courageous decision. Patricia sold everything she owned and utilized her inheritance to initiate the school. Tragically, Patricia passed away in 2008 before witnessing her dreams come to fruition. Feeling like she had failed, Patricia's dying wish to Joseph Mboya was to establish the school through trustees and fundraising efforts.
@@ -29,6 +36,7 @@
     </div>
   </div>
 </template>
+
 
 <script lang="ts">
 import slide1 from '@/static/images/sliders/slide-1.jpg';
@@ -94,6 +102,3 @@ export default {
 };
 </script>
 
-<style scoped>
-/* Tailwind CSS classes are applied directly, no additional comments needed */
-</style>

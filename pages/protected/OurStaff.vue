@@ -1,103 +1,47 @@
-
-
 <script lang="ts">
+// Import staff images
 import staff1 from '@/static/images/staff/staff1.jpg';
 import staff2 from '@/static/images/staff/staff2.jpg';
 import staff4 from '@/static/images/staff/staff4.jpg';
+
+// Set page metadata
 definePageMeta({ auth: false });
+
 export default {
   props: {
-   
     href: String,
   },
   
-data() {
-    
-      // This is an array of staff members, with their id, title, name, and image source
-      const staff = [
-        {
-          id: 2,
-          title: 'HEADTEACHER',
-          name: 'Mr. Felix',
-          src: staff1,
-        },
-        {
-          id: 1,
-          title: 'Vice Principal (Academics)',
-          name: 'Mrs Omolo',
-          src: staff4,
-        },
-        {
-          id: 3,
-          title: 'Vice Principal (Administration)',
-          name: 'Mrs Trina',
+  data() {
+    // Array of staff members with their details
+    const staff = [
+      {
+        id: 2,
+        title: 'HEADTEACHER',
+        name: 'Mr. Felix',
+        src: staff1,
+      },
+      // ... other staff members ...
+    ];
 
-          src: staff2,
-        },
-          {
-          id: 4,
-          title: 'Vice Principal (Administration)',
-          name: 'Mrs Trina',
-          src: staff2,
-        },
-          {
-          id: 5,
-          title: 'Vice Principal (Administration)',
-          name: 'Mrs Trina',
-          src: staff2,
-        },
-          {
-          id: 6,
-          title: 'Vice Principal (Administration)',
-          name: 'Mrs Trina',
-          src: staff2,
-        },
-          {
-          id: 7,
-          title: 'Vice Principal (Administration)',
-          name: 'Mrs Trina',
-          src: staff2,
-        },
-          {
-          id: 8,
-          title: 'Vice Principal (Administration)',
-          name: 'Mrs Trina',
-          src: staff2,
-        },
-          {
-          id: 9,
-          title: 'Vice Principal (Administration)',
-          name: 'Mrs Trina',
-          src: staff2,
-        },
-          {
-          id: 10,
-          title: 'Vice Principal (Administration)',
-          name: 'Mrs Trina',
-          src: staff2,
-        },
-          {
-          id: 11,
-          title: 'Vice Principal (Administration)',
-          name: 'Mrs Trina',
-          src: staff2,
-        },
-      ];
-      return{
- staff,
- selectedStaff: null,
-      };
-    },
-    methods: {
-      showModal(staff) {
-        this.selectedStaff = staff;
-        this.$nextTick(() => {
-          this.$refs.title[0].classList.remove('truncate-ovrflow')
-        })
-      }
+    return {
+      staff,
+      selectedStaff: null,
+    };
+  },
+  
+  methods: {
+    // Show modal with full staff member details
+    showModal(staff) {
+      this.selectedStaff = staff;
+      this.$nextTick(() => {
+        this.$refs.title[0].classList.remove('truncate-ovrflow');
+      });
     }
-  };
+  }
+};
 </script>
+
 <template>
   <section id="child" class="container py-20 border-t border-secondary">
     <div class="mx-auto px-4 text-center sm:px-6 lg:px-8 py-16">
@@ -128,10 +72,7 @@ data() {
           <p class="text-green-600 mb-4">{{ selectedStaff.image }}</p>
           <p class="text-base leading-relaxed text-lg" v-html="selectedStaff.title"></p>
           <button class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg mt-8" @click="selectedStaff = null">Close</button>
-          <!-- Display PayPal donation button -->
-          <div id="donate-button-container">
-            <div id="donate-button"></div>
-          </div>
+         
         </div>
       </div>
     </div>

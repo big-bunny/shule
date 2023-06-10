@@ -52,43 +52,52 @@ import post4 from '@/static/images/news/post-4.jpg';
 import post5 from '@/static/images/news/post-5.jpg';
 import post6 from '@/static/images/news/post-6.jpg';
 
+// Define the page meta data, specifically setting "auth" to false
 definePageMeta({ auth: false });
+
 export default {
   props: {
     href: String,
   },
   setup() {
+    // Define an array of posts with their properties
     const posts = [
+      // First post
       {
         title: 'Schield Center Celebrates 10 Years of Excellence in Education',
         image: post1,
         description: 'Schield Center has been providing quality education to students in Kajiado for the past decade. To celebrate this milestone, the school hosted a series of events...',
         link: '#',
       },
+      // Second post
       {
         title: 'Schield Center Receives Award for Best Performing School in Kajiado',
         image: post2,
         description: 'Schield Center was recently recognized as the best performing school in Kajiado County. The award was presented by the County Governor...',
         link: '#',
       },
+      // Third post
       {
         title: 'Schield Center Launches New STEM Program for Students',
         image: post3,
         description: 'Schield Center is proud to announce the launch of its new STEM program for students. The program will provide students with hands-on...',
         link: '#',
       },
+      // Fourth post
       {
         title: 'Schield Center Students Win National Science Competition',
         image: post4,
         description: 'A team of Schield Center students recently won the National Science Competition. The team developed a new method for...',
         link: '#',
       },
+      // Fifth post
       {
         title: 'Schield Center Partners with Local NGOs to Improve Education in Rural Areas',
         image: post5,
         description: 'Schield Center has partnered with local NGOs to improve access to education in rural areas. The school will be providing resources and training...',
         link: '#',
       },
+      // Sixth post
       {
         title: 'Schield Center Launches New Athletics Program for Students',
         image: post6,
@@ -96,8 +105,11 @@ export default {
         link: '#',
       },
     ];
+
+    // Create a reactive reference to store the selected post
     const selectedPost = ref(null);
 
+    // Function to show the modal and assign the selected post
     const showModal = (post) => {
       selectedPost.value = post;
       // Remove the "truncate-overflow" class from the post's description element
@@ -106,6 +118,7 @@ export default {
       });
     };
 
+    // Function to truncate the description of a post to a specific word limit
     const truncateDescription = (description, wordLimit) => {
       const words = description.split(' ');
       if (words.length > wordLimit) {

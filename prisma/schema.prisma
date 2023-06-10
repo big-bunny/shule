@@ -1,13 +1,17 @@
+// This configuration file defines the data models and settings for the Prisma client
+
+// Configure the code generator for the Prisma client
 generator client {
   provider = "prisma-client-js"
-
 }
 
+// Define the data source for the Prisma client
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
+// Define the "User" data model
 model User {
   id                 String @id @default(auto()) @map("_id") @db.ObjectId
   authentication_key String
@@ -17,6 +21,7 @@ model User {
   username           String
 }
 
+// Define the "schield_friends" data model
 model schield_friends {
   id       String @id @default(auto()) @map("_id") @db.ObjectId
   email    String

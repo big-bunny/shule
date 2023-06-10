@@ -9,6 +9,9 @@
 </template>
 
 <script lang="ts">
+export default {
+  // Component options
+}
 // Your script logic goes here
 </script>
 

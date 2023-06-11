@@ -88,7 +88,7 @@ export default {
       {
         id: 3,
         title: 'Vice Principal (Administration)',
-        name: 'Mrs Okojie',
+        name: 'Mrs Trina',
         src: staff2,
         hover: false
       }

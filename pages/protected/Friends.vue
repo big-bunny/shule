@@ -21,7 +21,14 @@ const { status, data, signOut, signIn } = useAuth()
           class="w-12 h-12 rounded-full"
           :src="data.user.image"
           alt="User Avatar"
-        />
+        />     <div v-if="status === 'authenticated'">
+          <p><strong>Name:</strong> {{ data?.user?.name }}</p>
+          <p><strong>Email:</strong> {{ data?.user?.email }}</p>
+          <p><strong>Role:</strong> {{ data?.user?.role }}</p>
+        </div>
+        <div v-else>
+          <p>Please log in to view user information.</p>
+        </div>
         <div>
           <!-- Display user name if authenticated -->
           <h1 v-if="status === 'authenticated'" class="text-lg font-bold text-white">Schield's friends {{ data?.user?.name }} is about to donate! logout if you dont want to processed </h1>
@@ -29,6 +36,8 @@ const { status, data, signOut, signIn } = useAuth()
           <h1 v-else class="text-lg text-white">Not logged in</h1>
         </div>
       </div>
+
+
       <!-- Logout button if authenticated -->
       <button
         v-if="status === 'authenticated'"

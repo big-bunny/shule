@@ -15,7 +15,7 @@
             <h2 class="text-xl font-semibold text-gray-900">{{ item.name }}</h2>
             <p class="mt-2 text-green-600">{{ item.grade }}</p>
             <!-- Display truncated student bio -->
-            <p class="text-lg leading-relaxed truncate-overflow" v-html="item.bio" ref="bio"></p>
+            <p class="text-lg leading-relaxed truncate-overflow" v-html="truncateWords(item.bio, 5)" ref="bio"></p>
             <!-- Button to show full bio and donation options -->
             <a href="#" class="text-green-500 inline-block mt-4 underline" @click.prevent="showModal(item)">Read more</a>
           </div>
@@ -117,6 +117,20 @@ export default {
         this.$refs.bio[0].classList.remove("truncate-overflow");
       });
     },
+    // Function to truncate words in a string
+    truncateWords(str, numWords) {
+      const words = str.split(" ");
+      if (words.length <= numWords) {
+        return str;
+      } else {
+        const truncatedWords = words.slice(0, numWords);
+        return truncatedWords.join(" ") + "...";
+      }
+    },
   },
 };
 </script>
+
+<style scoped>
+/* Styles specific to this component */
+</style>

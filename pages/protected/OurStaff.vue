@@ -58,23 +58,11 @@ export default {
             <p class="mt-2 text-green-600">{{ item.title }} </p>
             <!-- Display truncated staff member bio -->
             <p class="text-lg leading-relaxed truncate-overflow" v-html="item.bio" ref="bio"></p>
-            <!-- Button to show full bio and donation options -->
-            <a href="#" class="text-green-500" @click.prevent="showModal(item)">Read more</a>
+          
           </div>
         </div>
       </div>
     </div>
-    <!-- Display selected staff member's full bio and donation options -->
-    <div v-if="selectedStaff" class="fixed inset-0 bg-gray-700 bg-opacity-50 flex justify-center items-center">
-      <div class="bg-white max-w-md mx-auto rounded-lg overflow-hidden">
-        <div class="p-6">
-          <h2 class="text-2xl font-bold mb-2">{{ selectedStaff.name }}</h2>
-          <p class="text-green-600 mb-4">{{ selectedStaff.image }}</p>
-          <p class="text-base leading-relaxed text-lg" v-html="selectedStaff.title"></p>
-          <button class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-lg mt-8" @click="selectedStaff = null">Close</button>
-         
-        </div>
-      </div>
-    </div>
+
   </section>
 </template>

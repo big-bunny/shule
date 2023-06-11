@@ -39,7 +39,7 @@
 
 
 <script lang="ts">
-import slide1 from '@/static/images/sliders/slide-1.jpg';
+import slide1 from '@/static/images/sliders/slide-3.jpg';
 import slide2 from '@/static/images/sliders/slide-2.jpg';
 import slide3 from '@/static/images/sliders/slide-3.jpg';
 import slide4 from '@/static/images/sliders/slide-4.jpg';

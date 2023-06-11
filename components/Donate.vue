@@ -21,16 +21,15 @@ export default {
           console.error(err); // Logging an error if the script fails to load
           return;
         }
-        PayPal.Donation.Button({
-          // Initializing the PayPal Donate Button
-          env: 'sandbox', // Setting the environment to sandbox for testing purposes
-          hosted_button_id: 'DUYQ2AGRGFRR2', // Setting the hosted button ID
-          image: {
-            src: 'https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif', // Setting the image source for the button
-            alt: 'Donate with PayPal button', // Setting the alt text for the button image
-            title: 'PayPal - The safer, easier way to pay online!', // Setting the title for the button image
-          }
-        }).render('#paypal-donate-button-container'); // Rendering the PayPal Donate Button inside the specified container
+    PayPal.Donation.Button({
+                  env: 'production',
+                  hosted_button_id: '4P8PU85JD8QT4',
+                  image: {
+                    src: 'https://pics.paypal.com/00/s/YzI1ODQ5MTUtMzExMi00YzIzLWE3Y2EtNjE0MDQ4OTE5MzJk/file.PNG',
+                    alt: 'Donate with PayPal button',
+                    title: 'PayPal - The safer, easier way to pay online!',
+                  }
+                }).render('#donate-button');// Rendering the PayPal Donate Button inside the specified container
       });
     }
   },
@@ -90,7 +89,6 @@ export default {
 
 }
 </script>
-
 <template>
   <section class="bg-green-400 mt-40 rounded-full">
     <div class="max-w-6xl mx-auto">
@@ -119,11 +117,13 @@ export default {
         <div class="w-2/12">
           <!-- Block for the right section of the header -->
           <div class="flex bg-accent rounded-full justify-end items-center">
-            <div id="paypal-donate-button-container"></div>
+            <div id="donate-button-container">
+              <div id="donate-button"></div>
+           
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 </template>
-

@@ -31,7 +31,7 @@
                 <!-- Dropdown toggle button -->
                 <a class="block px-4 py-2 hover:text-green-500 transition duration-300 ease-in-out" @click="toggleDropdown(index)">
                   <!-- Icon for the dropdown toggle -->
-                  <i class="fas fa-chevron-down mr-1"></i>
+                  <i class="fas fa-hands-helping mr-1"></i>
                   <!-- Label for the dropdown toggle -->
                   {{ link.label }}
                 </a>
@@ -42,7 +42,7 @@
                     <!-- Dropdown item link -->
                     <a :href="dropdownItem.url" class="block px-4 py-2 hover:text-green-500 transition duration-300 ease-in-out">
                       <!-- Icon for the dropdown item -->
-                      <i class="fas fa-chevron-right mr-1"></i>
+                      <i class="fas fa-donate right mr-1"></i>
                       <!-- Label for the dropdown item -->
                       {{ dropdownItem.label }}
                     </a>
@@ -67,9 +67,9 @@
           <template v-for="(link, index) in links" :key="index">
             <div class="relative">
               <!-- If the link has dropdown items -->
-              <a v-if="link.dropdownItems" class="inline-block text-red-500 text-lg mr-4 font-bold hover:text-secondary hover:bg-accent px-4 py-2 rounded-full" @click="toggleDropdown(index)">
+              <a v-if="link.dropdownItems" class="inline-block text-red-500 text-lg mr-4 font-bold hover:text-green-500 hover:bg-accent px-4 py-2 rounded-full" @click="toggleDropdown(index)">
                 <!-- Icon for the dropdown toggle -->
-                <i class="fas fa-chevron-down mr-1"></i>
+                <i class="fas fa-hands-helping mr-1"></i>
                 <!-- Label for the dropdown toggle -->
                 {{ link.label }}
               </a>
@@ -80,7 +80,7 @@
                   <!-- Dropdown item link -->
                   <a :href="dropdownItem.url" class="block px-4 py-2 hover:text-green-500 hover:bg-accent rounded-full transition duration-300 ease-in-out">
                     <!-- Icon for the dropdown item -->
-                    <i class="fas fa-chevron-right mr-1"></i>
+                    <i class="fas fa-donate mr-1"></i>
                     <!-- Label for the dropdown item -->
                     {{ dropdownItem.label }}
                   </a>

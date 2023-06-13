@@ -27,7 +27,7 @@
       
       </div>
 
-      <div class=""> <!-- school name and powered by container -->
+      <div class="text-green-500"> <!-- school name and powered by container -->
         &copy; {{ $config.schoolName }}, 2021. Powered by
         <a href="https://g-hub.com" class="font-bold text-primary">G-Hub</a>
       </div>

@@ -37,7 +37,7 @@
 
 
 <script lang="ts">
-import logoImage from '../public/logo.png';
+import logoImage from '../static/logo.png';
 
 export default {
   data() {

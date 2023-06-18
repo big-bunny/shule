@@ -17,7 +17,7 @@
         </div>
 
         <!-- Right section with the about content -->
-        <div class="w-full lg:w-1/3 bg-gradient-to-r from-secondary to-accent rounded-3xl shadow-md px-8 py-10 md:py-20 lg:px-12 flex flex-col">
+        <div class="w-full lg:w-1/3 bg-gradient-to-r from-secondary to-accent rounded-3xl  backdrop-blur-3xl shadow-md px-8 py-10 md:py-20 lg:px-12 flex flex-col">
           <!-- Heading for the about section -->
           <h2 class="text-3xl font-extrabold bg-gradient-to-r from-accent to-secondary text-gray-900 inline-block rounded-full px-6 py-2">
             ABOUT SCHIELD CENTER

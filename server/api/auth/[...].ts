@@ -13,10 +13,10 @@ const prisma = new PrismaClient();
 // Create a nodemailer transporter
 const transporter = nodemailer.createTransport({
   // Configure the transporter with your email service provider details
-  service: 'your_email_service_provider',
+  service: 'SMTP',
   auth: {
-    user: 'your_email',
-    pass: 'your_email_password',
+    user: 'codecenter000@@gmail.com',
+    pass: '0110883547Kim',
   },
 });
 

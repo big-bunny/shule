@@ -3,7 +3,7 @@
   
     <!-- Navigation bar for the contact section -->
     <nav
-      class="md:w-2/3 bg-gradient-to-r from-accent to-white rounded-xl shadow-md mx-auto"
+      class="md:w-2/3 bg-gradient-to-r from-accent to-white  backdrop-blur-3xl rounded-xl shadow-md mx-auto"
     >
       <nav
         class="flex justify-evenly bg-right bg-no-repeat bg-contain text-primary"

@@ -127,7 +127,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import logoImage from '/public/logo.png';
+import logoImage from '/static/logo.png';
 // import { useAuth } from 'your-auth-library'; // Import your authentication library or implement your own logic
 
 export default defineComponent({
